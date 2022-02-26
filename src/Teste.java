@@ -2,6 +2,8 @@ class Teste
 {
 	public static void main (String args[])
 	{
+		
+		String membros1 [] = {null, null};
 		Tcc tcc1 = new Tcc ();
 		Aluno aluno1 = new Aluno("Martin Fowler",
 							"ADS",
@@ -15,9 +17,13 @@ class Teste
 							20.5,
 							tcc1);
  
+		
+		String membros2 [] = {"Grady Booch",
+							"Erich Gamma"};
 		Tcc tcc2 = new Tcc ("Peter Coad",
 							"Impacto da Refatoração",
-							9.5);
+							null,
+							membros2);
 				
 		Aluno aluno2 = new Aluno("Kent Beck",
 							"Computação Aplicada",

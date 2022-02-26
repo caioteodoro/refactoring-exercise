@@ -31,51 +31,58 @@ class Aluno{
 	this.dados_tcc = dados_tcc;
 			}
  
-	public String DadosAluno() {
+	public String getDadosAluno() {
 		String resp = "Aluno: "+ this.nome +"\n";
 		resp += "Curso: " + this.curso.nível_curso + " em " + this.curso.nome_curso +"\n";
+		return resp;
+	}
+	
+	public String getMensalidade()
+	{
+		String resp="";
 		if (this.é_bolsista) 
 		{
 			resp += "Bolsista com desconto de: " + this.desconto + "%\n";
-			resp += "Mensalidade: R$ " + this.curso.mensalidade_curso*(1-this.desconto/100)+ "\n";
+			this.curso.mensalidade_curso *= (1-this.desconto/100);
 		}
-		else resp += "Mensalidade: R$ " + this.curso.mensalidade_curso+ "\n";
-		
+		resp += "Mensalidade: R$ " + this.curso.mensalidade_curso + "\n";
 		return resp;
 	}
 	
-	public String CursoFinalizado() {
+	public String getFinalizacaoDoCurso() {
 		String resp = "";
-		if (this.curso_finalizado)
-		{
-		 resp += "Curso finalizado em "+ano_finalização + "\n";
-		 if (this.curso.tem_trabalho)
-		 {
-			resp += "Título ";
-			switch (curso.nível_curso)
-			{
-			 case "Graduação": resp += "do TCC: "; break;
-			 case "Lato sensu": resp += "da monografia: "; break;
-			 case "Mestrado": resp += "da dissertação: "; break;
-			 case "Doutorado": resp += "da tese: "; break;
-			}
+		if (this.curso_finalizado) {
+			resp += "Curso finalizado em "+ano_finalização + "\n";
+			if (this.curso.tem_trabalho) {
+				resp += "Título ";
+				switch (curso.nível_curso) {
+					case "Graduação": resp += "do TCC: "; break;
+					case "Lato sensu": resp += "da monografia: "; break;
+					case "Mestrado": resp += "da dissertação: "; break;
+					case "Doutorado": resp += "da tese: "; break;
+				}
 			resp += dados_tcc.titulo + "\n";
 			resp += "Orientador(a): Prof. " + dados_tcc.nome_orientador + "\n";
-			resp += "Nota: " + dados_tcc.nota_trabalho;
-		}
+			
+			if (this.curso.nível_curso.equals("Graduação")) {
+				resp += "Nota: " + dados_tcc.nota_trabalho; 
+				} else if (this.curso.nível_curso.equals("Mestrado") || this.curso.nível_curso.equals("Doutorado")) {
+					resp += "Banca: " + dados_tcc.membros_banca[0] + " - " + dados_tcc.membros_banca[1]; 
+					if (this.curso.nível_curso.equals("Doutorado")) {
+						resp += dados_tcc.membros_banca[2] + " - " + dados_tcc.membros_banca[3];
+					}
+				}
+			}
 		}
 		return resp;
 	}
-	
 	
 	public String getDados()
 	{
 		String resp = "";
-		resp += this.DadosAluno();
-		resp += this.CursoFinalizado();
+		resp += this.getDadosAluno();
+		resp += this.getMensalidade();
+		resp += this.getFinalizacaoDoCurso();
 		return resp;
-	}
-	
-	
-	
+	}	
 }

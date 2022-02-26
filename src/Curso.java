@@ -14,7 +14,6 @@ class Curso{
 				}
 	
 	public Curso() {
-		
 	}
 	
 }
