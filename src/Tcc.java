@@ -14,8 +14,6 @@ public class Tcc {
 	this.membros_banca = membros_banca;
 	}
 	
-	
-	
 	public Tcc() {
 		
 	}

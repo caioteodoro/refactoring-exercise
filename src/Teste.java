@@ -11,7 +11,7 @@ class Teste
 							11223344,
 							true,
 							false,
-							false,
+							false,r
 							-1,
 							920.50,
 							20.5,
@@ -21,7 +21,7 @@ class Teste
 		String membros2 [] = {"Grady Booch",
 							"Erich Gamma"};
 		Tcc tcc2 = new Tcc ("Peter Coad",
-							"Impacto da Refatoração",
+							"Impacto da Refatoação",
 							null,
 							membros2);
 				
